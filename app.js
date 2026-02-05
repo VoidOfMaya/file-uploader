@@ -1,0 +1,41 @@
+import express from 'express';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import'dotenv/config';
+
+import {defaultRouter}  from './index/defaultRouter.js';
+
+
+//setup basic server
+const app = express(()=>{
+    console.log('server booting...');
+});
+
+// generic asset and ejs setup 
+//the following 2 lines are esm specific(dirname is only implicit in common.js)
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+
+//setting up static assets in ane xpress env
+const assetsPath = path.join(__dirname, 'public');
+app.use(express.static(assetsPath));
+
+//parse form data to a request body
+app.use(express.urlencoded({extended: true}));
+app.use(express.json());
+
+//router setup
+app.use('/', defaultRouter);
+
+
+//listining setup
+
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, (err)=>{
+    if(err) throw new err ;
+    console.log(`Server running on port: ${PORT}`);
+})
