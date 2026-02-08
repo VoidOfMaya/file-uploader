@@ -3,7 +3,9 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import'dotenv/config';
 
-import {defaultRouter}  from './index/defaultRouter.js';
+import {defaultRouter}  from './default/defaultRouter.js';
+import { setSession, setPassport } from './Auth/authMidWare.js';
+import passport from 'passport';
 
 
 //setup basic server
@@ -26,6 +28,13 @@ app.use(express.static(assetsPath));
 //parse form data to a request body
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
+//setup passport and session
+
+setSession(app)
+
+setPassport();
+app.use(passport.initialize());
+app.use(passport.session());
 
 //router setup
 app.use('/', defaultRouter);
