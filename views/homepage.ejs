@@ -6,6 +6,20 @@
     <title>file-uploader</title>
 </head>
 <body>
-    <h1>Welcome to file uploader!</h1>
+    <header><h1>Welcome to file uploader!</h1></header>
+    <main>
+        <h3>log in!</h3>
+        <form method="post" accept="/auth/login">
+            <label for="username">Username:</label>
+            <input name="username" type="text">
+
+            <label for="password">Password</label>
+            <input name="password" type="password">
+            <button>log in</button>
+        </form>
+        <button type="button">register</button>
+    </main>
+    
+    
 </body>
 </html>
