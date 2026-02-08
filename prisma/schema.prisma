@@ -16,9 +16,9 @@ datasource db {
 model Session{
   id      String      @id
   sid     String      @unique
-  data    Json
-  expire  DateTime    @default(now())
-  @@map("session")
+  data    String 
+  expires  DateTime  
+  @@map("sessions")
 }
 
 //main db
