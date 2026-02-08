@@ -8,8 +8,6 @@
 2. cli >npm install
 
 ### dependancies:
-- @prisma/adapter-pg
-- @prisma/client
 - bcryptjs
 - connect-pg-simple
 - dotenv
@@ -20,3 +18,7 @@
 - passport
 - passport-local
 - pg
+- prisma
+- @prisma/client
+- @prisma/adapter-pg
+- @quixo3/prisma-session-store
