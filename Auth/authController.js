@@ -22,7 +22,6 @@ async function createUser(req, res){
         console.log(err)
         res.redirect('/')
     }
-    console.log(data);
     res.redirect('/')
 }
 

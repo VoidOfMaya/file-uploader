@@ -22,3 +22,25 @@ model Session{
 }
 
 //main db
+
+model User{
+  id        Int     @id @default(autoincrement())
+  firstName String  @map("First_name")
+  lastName  String  @map("Last_name")
+  username  String 
+  passwprd  String
+  file      file[] 
+
+  @@map("users")
+}
+model file{
+  id        Int     @id @default(autoincrement())
+  user      User    @relation(fields: [userId],references: [id])
+  userId    Int     @map("user_id")
+
+  name      String
+  size      String
+  date      DateTime
+  content   Json
+
+}
