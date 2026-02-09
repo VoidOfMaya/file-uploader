@@ -36,8 +36,8 @@
             <input  style="grid-area: p-i;"  id="sign-up-password"  
                     name="password" type="password" minlength="5" maxlength="30" required>
 
-            <label  for="confirmPassword">Confirm password</label>
-            <input  id="sign-up-confirm-password" name="confirmPassword" type="password" required>
+            <label  style="grid-area: pc-l;" for="confirmPassword">Confirm password</label>
+            <input  style="grid-area: pc-i;"  id="sign-up-confirm-password" name="confirmPassword" type="password" required>
 
             <button type="submit" id="register-button">register</button>
             <button id="close-dialog" type="button">cancel</button>
@@ -46,15 +46,20 @@
     <script>
         const dialogBtn = document.getElementById('register-form');
         const closeBtn = document.getElementById('close-dialog');
+        //const registerBtn = document.getElementById('register-button')
         const dialogForm = document.getElementById('register');
         
 
         dialogBtn.addEventListener('click',()=>{
             dialogForm.showModal();
-        })
+        });
         closeBtn.addEventListener('click',()=>{
             dialogForm.close();
-        })
+        });
+        //registerBtn.addEventListener('click',()=>{
+        //    dialogForm.close();
+        //});
+
     </script>
     
     
