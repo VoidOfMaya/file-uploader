@@ -1,5 +1,5 @@
 //imports 
-const {body}= require('express-validator');
+import {body} from 'express-validator';
 //validations go here
 
 //sign up form structure:{firstName: 'david',lastName: 'black',username: 'lulul',password: '123',confirmPassword: '123'};
@@ -38,7 +38,7 @@ const logIn =[
                     .isLength({min:8}).withMessage('password must atleast be 8 letters')
                     .matches(/^[A-Za-z0-9\s.,!?@#$_-]+$/).withMessage('can only contain letters, numbers, hyphens, apostrophes')]
 
-module.exports={
+export{
     registery,
     logIn,
 

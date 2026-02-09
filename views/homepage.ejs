@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
     <title>file-uploader</title>
 </head>
 <body>
@@ -17,29 +18,44 @@
             <input name="password" type="password">
             <button>log in</button>
         </form>
-        <button type="button">register</button>
+        <button type="button" id="register-form">register</button>
     </main>
     <dialog id="register">
         <h5 style="justify-self: center;">all fields are required!</h5>
-        <form class="sign-up-form" id="sign-up-form" method="post" action="/auth/sign-up">
-            <label style="grid-area: fn-l;" for="firstName">First name</label>
-            <input style="grid-area: fn-i;" name="firstName" type="text" minlength="3" maxlength="12" required>
+        <form class="sign-up-form" id="sign-up-form" method="post" action="/auth/register">
+            <label  style="grid-area: fn-l;" for="firstName">First name</label>
+            <input  style="grid-area: fn-i;"name="firstName" type="text" minlength="3" maxlength="12" required>
 
-            <label style="grid-area: ln-l;" for="lastName">Last name</label>
-            <input style="grid-area: ln-i;" name="lastName" type="text" minlength="3" maxlength="12" required>
+            <label  style="grid-area: ln-l;" for="lastName">Last name</label>
+            <input  style="grid-area: ln-i;" name="lastName" type="text" minlength="3" maxlength="12" required>
 
-            <label style="grid-area: u-l;" for="username">Username:</label>
-            <input style="grid-area: u-i;" name="username" type="text" minlength="4" maxlength="24"required>
+            <label  style="grid-area: u-l;"  for="username">Username:</label>
+            <input  style="grid-area: u-i;"  name="username" type="text" minlength="4" maxlength="24"required>
 
-            <label style="grid-area: p-l;" for="password">Password</label>
-            <input style="grid-area: p-i;" id="sign-up-password"  name="password" type="password" minlength="5" maxlength="30" required>
+            <label  style="grid-area: p-l;"  for="password">Password</label>
+            <input  style="grid-area: p-i;"  id="sign-up-password"  
+                    name="password" type="password" minlength="5" maxlength="30" required>
 
-            <label style="grid-area: cp-l;" for="confirmPassword">Confirm password</label>
-            <input style="grid-area: cp-i;" id="sign-up-confirm-password" name="confirmPassword" type="password" required>
-            <button style="grid-area: sing-up-btn;" type="submit" id="register-button">register</button>
-            <a     style="grid-area: cancel-signup-btn;" href="/" >cancel</a>
+            <label  for="confirmPassword">Confirm password</label>
+            <input  id="sign-up-confirm-password" name="confirmPassword" type="password" required>
+
+            <button type="submit" id="register-button">register</button>
+            <button id="close-dialog" type="button">cancel</button>
         </form>
     </dialog>
+    <script>
+        const dialogBtn = document.getElementById('register-form');
+        const closeBtn = document.getElementById('close-dialog');
+        const dialogForm = document.getElementById('register');
+        
+
+        dialogBtn.addEventListener('click',()=>{
+            dialogForm.showModal();
+        })
+        closeBtn.addEventListener('click',()=>{
+            dialogForm.close();
+        })
+    </script>
     
     
 </body>

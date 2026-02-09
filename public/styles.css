@@ -1,0 +1,12 @@
+#sign-up-form{
+    display: grid;
+    grid-template: repeat(6, 1fr)/ 1fr 1fr;
+
+    grid-template-areas:
+    'fn-l fn-i'
+    'ln-l ln-i'
+    'u-l u-i'
+    'p-l p-i'
+    'pc-l pc-i'
+    'register cancel';
+}

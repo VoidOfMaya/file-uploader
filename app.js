@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url';
 import'dotenv/config';
 
 import {defaultRouter}  from './default/defaultRouter.js';
+import {authRouter} from './Auth/authRouter.js'
 import { setSession, setPassport } from './Auth/authMidWare.js';
 import passport from 'passport';
 
@@ -38,6 +39,7 @@ app.use(passport.session());
 
 //router setup
 app.use('/', defaultRouter);
+app.use('/auth',authRouter);
 
 
 //listining setup
