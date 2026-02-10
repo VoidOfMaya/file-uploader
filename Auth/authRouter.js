@@ -10,7 +10,7 @@ const authRouter = Router();
 
 authRouter.post('/register',validateSignup, actionCreateUser);
 authRouter.post('/login', validateLogin, passport.authenticate('local',{successRedirect: '/', failureRedirect: '/'}));
-authRouter.get('/log-out', actionLogout);
+authRouter.get('/logout', actionLogout);
 
 
 
