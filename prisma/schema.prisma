@@ -34,13 +34,15 @@ model User{
   @@map("users")
 }
 model file{
-  id        Int     @id @default(autoincrement())
-  user      User    @relation(fields: [userId],references: [id])
-  userId    Int     @map("user_id")
+  id                Int      @id @default(autoincrement())
+  user              User     @relation(fields: [userId],references: [id])
+  userId            Int      @map("user_id")
+  uploadTime        DateTime @default(now())
 
-  name      String
-  size      String
-  date      DateTime
-  content   Json
+  originalName      String
+  fileName          String
+  mimeType          String
+  size              Int
+  path              String
 
 }
