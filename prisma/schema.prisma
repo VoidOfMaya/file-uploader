@@ -28,7 +28,7 @@ model User{
   firstName String  @map("First_name")
   lastName  String  @map("Last_name")
   username  String 
-  passwprd  String
+  password  String
   file      file[] 
 
   @@map("users")
