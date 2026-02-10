@@ -1,10 +1,11 @@
-import {cloudUpload} from './cloudinary.service.js'
+//import {cloudUpload} from './cloudinary.service.js'
 import { prisma } from '../lib/prisma.js';
 import { matchedData, validationResult } from 'express-validator';
  async function uploadFile(req, res){
    //first validate and mutate data
 
    //handle data upload:
+   /*
    const data = matchedData(req);
 
    console.log(matchedData);
@@ -18,6 +19,10 @@ import { matchedData, validationResult } from 'express-validator';
    }catch(err){
       console.log(err)
    }
+      */
+   //console.log(req.user.id);
+   console.log(req.body.userId);
+   console.log(req.file);
    res.redirect('/');
  }
 

@@ -15,6 +15,7 @@
         <% if(user){ %>
             <h3>welcome <%= user.firstName %></h3>
             <form action="/upload/file" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="userId" value="<%= user.id %>" />
             <input type="file" name="upFile" />
             <button>Upload</button>
             </form>
