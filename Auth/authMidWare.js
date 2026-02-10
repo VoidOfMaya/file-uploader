@@ -4,11 +4,10 @@ import {PrismaClient} from '../generated/prisma/client.js';
 import {PrismaSessionStore} from '@quixo3/prisma-session-store';
 import passport from 'passport';
 import {Strategy as LocalStrategy} from 'passport-local';
+import bcrypt from 'bcryptjs';
 import 'dotenv/config';
 
-const connectionString = `${process.env.DATABASE_URL}`
-const adapter = new PrismaPg({connectionString});
-const prisma = new PrismaClient({adapter});
+import {prisma} from '../lib/prisma.js';
 
 function setSession(app){
     app.use(expressSession({
@@ -37,7 +36,7 @@ function setPassport(){
 passport.use(
     new LocalStrategy(async(username, password, done)=>{
         try{
-            const user = await postgres.getMember(username);          
+            const user = await prisma.user.findUnique({where: {username}});          
             if(!user){
                 return done(null, false,{message: 'Incorrect username'});
             }

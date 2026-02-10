@@ -1,7 +1,9 @@
 import { validationResult, matchedData } from "express-validator";
 import bcrypt from 'bcryptjs';
+import { prismaAddUser } from "../queries/queries.js";
+import passport from "passport";
 
-async function createUser(req, res){
+async function actionCreateUser(req, res){
     const errors = validationResult(req);
     if(!errors.isEmpty()){
         console.log({errors: errors.array()});
@@ -16,15 +18,29 @@ async function createUser(req, res){
                 password: await bcrypt.hash(data.password, 10),
             };
             console.log(parsedData);
-            //await postgres.addMember(secureData);
-            //console.log(`Registration success`);
+            await prismaAddUser(parsedData);
+            console.log(`Registration success`);
     }catch(err){
         console.log(err)
         res.redirect('/')
     }
     res.redirect('/')
 }
+async function actionLogout(req, res) {
+    req.logout(err=>{
+        err ? console.log(`passport logout error`): req.session.destroy(err =>{
+            if(err){
+                console.lofg(`session destroy error: ${err}`);
+                return
+            };
+            es.clearCookie('connect.sid');
+            res.redirect('/');
+            })
+    })
+    
+}
 
 export{
-    createUser,
+    actionCreateUser,
+    actionLogout,
 }

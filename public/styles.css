@@ -1,6 +1,35 @@
+label{
+    align-self: center;
+}
+input{
+    color: white;
+    align-self: center;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgb(218, 225, 231);
+    border: none;
+}
+input:hover{
+    background-color: rgb(88, 93, 97);
+}
+button{
+    border-radius: 20px;
+    background-color: rgb(4, 6, 15);
+    color: rgb(164, 165, 168);
+    padding: 10px;
+    outline: none;
+    border: none;
+}
+button:hover{
+    outline: 1px solid rgb(164, 165, 168);
+    background-color: rgb(17, 21, 39);
+    color: white;
+}
+
 #sign-up-form{
     display: grid;
     grid-template: repeat(6, 1fr)/ 1fr 1fr;
+    gap: 5px;
 
     grid-template-areas:
     'fn-l fn-i'
@@ -9,4 +38,12 @@
     'p-l p-i'
     'pc-l pc-i'
     'register cancel';
+}
+.invalid-input{
+    outline: 1px solid red;
+    outline-offset: 1px;
+}
+.valid-input{
+    outline: 1px solid green;
+    outline-offset: 1px;
 }

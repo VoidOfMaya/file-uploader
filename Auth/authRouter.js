@@ -1,5 +1,5 @@
 import { Router } from "express";
-import {createUser} from './authController.js';
+import {actionCreateUser, actionLogout} from './authController.js';
 import passport from "passport";
 import {
     registery as validateSignup, 
@@ -8,8 +8,9 @@ import {
 
 const authRouter = Router();
 
-authRouter.post('/register',validateSignup, createUser);
+authRouter.post('/register',validateSignup, actionCreateUser);
 authRouter.post('/login', validateLogin, passport.authenticate('local',{successRedirect: '/', failureRedirect: '/'}));
+authRouter.get('/log-out', actionLogout);
 
 
 

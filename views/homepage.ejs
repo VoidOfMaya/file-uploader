@@ -9,21 +9,28 @@
 <body>
     <header><h1>Welcome to file uploader!</h1></header>
     <main>
-        <h3>log in!</h3>
-        <form method="post" accept="/auth/login">
-            <label for="username">Username:</label>
-            <input name="username" type="text">
 
-            <label for="password">Password</label>
-            <input name="password" type="password">
-            <button>log in</button>
-        </form>
-        <button type="button" id="register-form">register</button>
-        
-        <form action="/upload/file" method="post" enctype="multipart/form-data">
-        <input type="file" name="upFile" />
-        <button>Upload</button>
-        </form>
+        <% if(user){ %>
+            <h3>welcome <%= user.firstName %></h3>
+            <form action="/upload/file" method="post" enctype="multipart/form-data">
+            <input type="file" name="upFile" />
+            <button>Upload</button>
+            </form>
+            <a href="/auth/logout">logout</a>            
+            </div>
+        <% } else { %>
+            <h3>please log in!</h3>
+            <form method="post" action="/auth/login">
+                <label for="username">Username:</label>
+                <input name="username" type="text">
+
+                <label for="password">Password</label>
+                <input name="password" type="password">
+                <button>log in</button>
+            </form>
+            <button type="button" id="register-form">register</button>            
+        <% } %>
+
 
     </main>
     <dialog id="register">
@@ -50,11 +57,10 @@
         </form>
     </dialog>
     <script>
+        //displays and hides dialog
         const dialogBtn = document.getElementById('register-form');
         const closeBtn = document.getElementById('close-dialog');
-        //const registerBtn = document.getElementById('register-button')
         const dialogForm = document.getElementById('register');
-        
 
         dialogBtn.addEventListener('click',()=>{
             dialogForm.showModal();
@@ -62,9 +68,37 @@
         closeBtn.addEventListener('click',()=>{
             dialogForm.close();
         });
-        //registerBtn.addEventListener('click',()=>{
-        //    dialogForm.close();
-        //});
+        //password confirmation validation
+        const pass = document.getElementById('sign-up-password');
+        const confirmPass = document.getElementById('sign-up-confirm-password');
+        const submitFormBtn = document.getElementById('register-button');
+        submitFormBtn.disabled = true;
+
+        const matchPasswords = (passwordOne, passwordTwo)=>{
+            if(passwordOne ===passwordTwo){
+                confirmPass.classList.remove('invalid-input');
+                confirmPass.classList.add('valid-input');
+                    
+                submitFormBtn.disabled = false
+                return
+            }
+            confirmPass.classList.remove('valid-input');
+            confirmPass.classList.add('invalid-input');
+            submitFormBtn.disabled = true
+        }
+
+
+        let passOne;
+        let passTwo;
+        pass.addEventListener('input',(e)=>{
+            passOne =e.target.value
+            matchPasswords(passOne, passTwo);
+        })
+        confirmPass.addEventListener('input',(e)=>{
+            passTwo =e.target.value
+            matchPasswords(passOne, passTwo);      
+
+        })
 
     </script>
     

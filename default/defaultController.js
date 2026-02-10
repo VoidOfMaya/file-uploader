@@ -1,4 +1,4 @@
 
 export default async function getHomePage(req, res){
-    res.render('homepage')
+    res.render('homepage',{user: req.user})
 } 

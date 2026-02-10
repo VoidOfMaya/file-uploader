@@ -1,4 +1,4 @@
-import {prisma} from '../lib/prisma';
+import {prisma} from '../lib/prisma.js';
 
 
 /* required queries
@@ -13,7 +13,7 @@ R-  read existing file from db
 U-  update existing file in db
 D-  delete existing file from db
 */
-async function addUser(userObj){
+async function prismaAddUser(userObj){
     await prisma.user.create({
         data:{
             firstName: userObj.firstName,
@@ -22,4 +22,8 @@ async function addUser(userObj){
             password:  userObj.password,
         }
     })
+}
+
+export{
+    prismaAddUser,
 }
