@@ -33,7 +33,7 @@ async function actionLogout(req, res) {
                 console.lofg(`session destroy error: ${err}`);
                 return
             };
-            es.clearCookie('connect.sid');
+            res.clearCookie('connect.sid');
             res.redirect('/');
             })
     })
