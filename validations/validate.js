@@ -41,12 +41,7 @@ const file =[
     body('userId').notEmpty()
                   .withMessage('this field is required')
                   .isInt()
-                  .withMessage('field must be a number'),
-    body('originalname'),
-    body('filename'),
-    body('mimetype'),
-    body('size'),
-    body('path'),
+                  .withMessage('field must be a number')
 ]
 
 export{

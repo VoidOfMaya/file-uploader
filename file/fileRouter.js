@@ -5,7 +5,7 @@ import multer from 'multer';
 //const upload = multer({dest: 'uploads/'});
 const storage = multer.memoryStorage();
 
-const upload = multer({storage: storage});
+const upload = multer({storage: storage,limits: { fileSize: 10 * 1022 * 1024}});
 
 const fileRouter = Router();
 
