@@ -5,25 +5,20 @@ import { matchedData, validationResult } from 'express-validator';
    //first validate and mutate data
 
    //handle data upload:
-   /*
+   
    const data = matchedData(req);
 
-   
-   if(!req.file){
-      console.log('no file upload detected')
-      res.redirect(302,'/')
-   }
    try{
+      if(!req.file) return res.render('/',{error: 'no file uploaded'});
       const result = await cloudUpload(req.file.buffer);
+      console.log('uploaded to cloudinary')
       console.log(result);
-      
+
    }catch(err){
       console.log(err)
    }
-   */      
-
-   console.log(req.body.userId);
-   console.log(req.file);
+   //console.log(req.body.userId);
+   //console.log(req.file);
    res.redirect('/');
  }
 
