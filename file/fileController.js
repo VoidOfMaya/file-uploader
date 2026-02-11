@@ -7,29 +7,35 @@ async function uploadFile(req, res){
    //first validate and mutate data
 
    //handle data upload:
-   
-   const data = matchedData(req);
+   const errors = validationResult(req);
 
-   try{
-      console.log(req.body)
-      console.log(req.file)
-      /*
-      if(!req.file) return res.render('/',{error: 'no file uploaded'});
+   if(!errors.isEmpty){
+      console.log(errors.array());
+      res.redirect('/');
+   }
+
+   try{       
+      if(!req.file) return res.redirect('/');
+         
       const result = await cloudUpload(req.file.buffer);
       console.log('uploaded to cloudinary')
 
+      if(!result.secure_url){
+         console.log('ERROR: no secure path found0')
+         res.redirect('/');
+      }
       //prisma takes a fileobj that has the following
-     const fileObj ={
-      userId :        data.userId,
-      originalName:   data.originalName,      
-      fileName:       data.fileName,    
-      mimeType:       data.mimeType,          
-      size:           data.size,           
-      path:           result.secure_url
-     }
-     await prismaAddFile(fileObj);
-     */
-
+      const fileObj ={
+         userId :        req.user.id,
+         originalName:   req.file.originalname,      
+         fileName:       result.public_id,    
+         mimeType:       req.file.mimetype,          
+         size:           req.file.size,           
+         path:           result.secure_url
+      }
+      await prismaAddFile(fileObj);
+      console.log('added to DB')
+      
    }catch(err){
       console.log(err)
    }

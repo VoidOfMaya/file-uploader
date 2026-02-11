@@ -37,15 +37,14 @@ const logIn =[
     body('password').trim().notEmpty().withMessage('password is required')
                     .isLength({min:8}).withMessage('password must atleast be 8 letters')
                     .matches(/^[A-Za-z0-9\s.,!?@#$_-]+$/).withMessage('can only contain letters, numbers, hyphens, apostrophes')]
-const file =[
-    body('userId').notEmpty()
-                  .withMessage('this field is required')
-                  .isInt()
+const fileUser =[
+    body('userId').isInt()
                   .withMessage('field must be a number')
 ]
 
 export{
     registery,
     logIn,
+    fileUser,
 
 }
