@@ -37,7 +37,7 @@ async function prismaAddFile(fileObj){
     })
 }
 async function prismaGetFiles(ownerId) {
-    return await prisma.file.findMany({where: userId = ownerId});
+    return await prisma.file.findMany({where: {userId:  ownerId}});
 }
 
 export{

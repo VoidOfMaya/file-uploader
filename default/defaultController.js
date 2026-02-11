@@ -1,4 +1,7 @@
+import { prismaGetFiles } from "../queries/queries.js"
 
 export default async function getHomePage(req, res){
-    res.render('homepage',{user: req.user, files: null})
+
+    const files = await prismaGetFiles(Number(req.user.id));
+    res.render('homepage',{user: req.user, files: files})
 } 
