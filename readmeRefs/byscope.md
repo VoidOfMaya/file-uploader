@@ -27,13 +27,13 @@
 
 ## 3) Database Schema (Prisma)
 - [X] Define `User` model
-- [ ] Define `Folder` model
+- [X] Define `Folder` model
 - [X] Define `File` model
-- [ ] Add relations between:
-  - [ ] User → Folder (one-to-many)
+- [X] Add relations between:
+  - [X] User → Folder (one-to-many)
   - [X] User → File (one-to-many)
-  - [ ] Folder → File (one-to-many)
-- [ ] Run Prisma migration
+  - [X] Folder → File (one-to-many)
+- [X] Run Prisma migration
 - [ ] Test basic queries
 
 ---
@@ -44,7 +44,7 @@
 - [ ] Add file type filtering
 - [X] Create upload route (`POST /files/upload`)
 - [X] Store file metadata in DB (without cloud first, if testing)
-- [ ] Ensure upload is restricted to authenticated users
+- [X] Ensure upload is restricted to authenticated users
 
 ---
 
@@ -68,7 +68,7 @@
   - [X] Upload time
 - [ ] GET `/files/:id/download`
 - [ ] Redirect or stream from stored cloud URL
-- [ ] Ensure only owner can access their files
+- [X] Ensure only owner can access their files
 
 ---
 
