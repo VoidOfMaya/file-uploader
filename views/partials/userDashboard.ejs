@@ -1,35 +1,55 @@
 <h3>welcome <%= user.firstName %></h3><a href="/auth/logout">logout</a>
-<form action="/upload/file" method="post" enctype="multipart/form-data">
-<input type="file" name="upFile" />
-<button>Upload</button>
-</form>
-<button id="show-folder-creation-dialog" type="button">create Folder</button>
-<section id="my-folders">
+
+
+
+
+
+<section id="storage-container">
     <% if(folders){ %>
-        <ul>
+        
         <% folders.forEach(folder => { %>
-            <li> <%= folder.name %> </li>            
-        </ul>
+            <div style="display: flex; flex-direction: column;">
+                <img src="/icons/folder-solid-full.svg" 
+                     alt="folder" 
+                     width="50" 
+                     height="50">
+                <div style="white-space: nowarp; text-overflow: ellipsis;  overflow: hidden;" ><%= folder.name %> </div>   
+            </div>
+                          
+        
         <% })%>
     <% } %>
-
-</section>
-<section id="my-files">
-    <%if(files){%>
-        <ul>
+    <%if(files){%> 
         <% files.forEach(file => { %>
-            <li> <%= file.originalName %>  
-            <%= file.mimeType %>  
-            <%= Math.round((file.size/ 1024)* 100)/100 %>Kb 
-            <%= file.uploadTime %> </li>
+            <div style="display: flex; flex-direction: column;">
+                <img src="/icons/file-solid-full.svg" 
+                     alt="folder" 
+                     width="50" 
+                     height="50">
+                <div style="white-space: nowarp; text-overflow: ellipsis; overflow: hidden;"><%= file.originalName %></div> 
+                <!-- following fields should be displayed in an about file dialog
+                <%= file.mimeType %>  
+                <%= Math.round((file.size/ 1024)* 100)/100 %>Kb 
+                <%= file.uploadTime %>
+                --> 
+            </div>
+
         <% }) %>
-    
-        </ul>
     <% }else { %>
         <p>your storage is empty!</p>
-    <% } %>
+    <% } %>          
+</section>
+<section id="storage-creation">
+    <form action="/upload/file" method="post" enctype="multipart/form-data">
+    <input type="file" id="upFile" name="upFile"  style="display: none;"/>
+    <label for="upFile">
+    <img src="/icons/plus-thick.svg" alt="add file" width="50" height="50">    
+    </label>
 
-</section>            
+    <button>Upload</button>
+    </form>
+    <button id="show-folder-creation-dialog" type="button">create Folder</button>
+</section>
 
 <dialog id="create-folder-dialog">
     <form method="post" action="/folders/new">

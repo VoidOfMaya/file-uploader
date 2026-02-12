@@ -8,7 +8,7 @@
 </head>
 <body>
     <header>
-            <h1> welcome to file uploader!</h1>
+            <h1>filoader</h1>
     </header>
     <main>
 
@@ -23,24 +23,36 @@
     <dialog id="register">
         <h5 style="justify-self: center;">all fields are required!</h5>
         <form class="sign-up-form" id="sign-up-form" method="post" action="/auth/register">
-            <label  style="grid-area: fn-l;" for="firstName">First name</label>
-            <input  style="grid-area: fn-i;"name="firstName" type="text" minlength="3" maxlength="12" required>
 
-            <label  style="grid-area: ln-l;" for="lastName">Last name</label>
-            <input  style="grid-area: ln-i;" name="lastName" type="text" minlength="3" maxlength="12" required>
+            <div class="field">
+                <label for="firstName">First name</label>
+                <input id="firstName" name="firstName" type="text" minlength="3" maxlength="12" required>
+            </div>
 
-            <label  style="grid-area: u-l;"  for="username">Username:</label>
-            <input  style="grid-area: u-i;"  name="username" type="text" minlength="4" maxlength="24"required>
+            <div class="field">
+                <label for="lastName">Last name</label>
+                <input id="lastName" name="lastName" type="text" minlength="3" maxlength="12" required>
+            </div>
 
-            <label  style="grid-area: p-l;"  for="password">Password</label>
-            <input  style="grid-area: p-i;"  id="sign-up-password"  
-                    name="password" type="password" minlength="5" maxlength="30" required>
+            <div class="field">
+                <label for="username">Username:</label>
+                <input id="username" name="username" type="text" minlength="4" maxlength="24"required>
+            </div>
 
-            <label  style="grid-area: pc-l;" for="confirmPassword">Confirm password</label>
-            <input  style="grid-area: pc-i;"  id="sign-up-confirm-password" name="confirmPassword" type="password" required>
+            <div class="field">
+                <label for="sign-up-password">Password</label>
+                <input id="sign-up-password" name="password" type="password" minlength="5" maxlength="30" required>
+            </div>
 
-            <button type="submit" id="register-button">register</button>
-            <button id="close-dialog" type="button">cancel</button>
+            <div class="field">
+                <label for="sign-up-confirm-password">Confirm password</label>
+                <input id="sign-up-confirm-password" name="confirmPassword" type="password" required>
+            </div>
+
+            <div class="field">
+                <button type="submit" id="register-button">register</button>
+                <button id="close-dialog" type="button">cancel</button>
+            </div>
         </form>
     </dialog>
 
