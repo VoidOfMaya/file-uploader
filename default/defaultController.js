@@ -1,4 +1,4 @@
-import { prismaGetFiles } from "../queries/queries.js"
+import { prismaGetFiles } from "../queries/fileQueries.js"
 
 //gets all available folders and files owned by user
 export default async function getHomePage(req, res){

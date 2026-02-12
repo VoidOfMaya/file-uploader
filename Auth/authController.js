@@ -1,6 +1,6 @@
 import { validationResult, matchedData } from "express-validator";
 import bcrypt from 'bcryptjs';
-import { prismaAddUser } from "../queries/queries.js";
+import { prismaAddUser } from "../queries/userQueries.js";
 import passport from "passport";
 
 async function actionCreateUser(req, res){

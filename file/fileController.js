@@ -1,7 +1,7 @@
 import {cloudUpload} from './cloudinary.service.js'
 import { prisma } from '../lib/prisma.js';
 import { matchedData, validationResult } from 'express-validator';
-import { prismaAddFile } from '../queries/queries.js';
+import { prismaAddFile } from '../queries/fileQueries.js';
  
 async function uploadFile(req, res){
    //first validate and mutate data
@@ -31,7 +31,8 @@ async function uploadFile(req, res){
          fileName:       result.public_id,    
          mimeType:       req.file.mimetype,          
          size:           req.file.size,           
-         path:           result.secure_url
+         path:           result.secure_url,
+         folderId:       null               //implement folderid get if file is created inside a folder
       }
       await prismaAddFile(fileObj);
       console.log('added to DB')
