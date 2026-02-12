@@ -8,7 +8,7 @@ import {authRouter} from './Auth/authRouter.js'
 import { setSession, setPassport } from './Auth/authMidWare.js';
 import passport from 'passport';
 import { fileRouter } from './file/fileRouter.js';
-import { folderRouter } from './folder/foderRouter.js';
+import { folderRouter } from './folder/folderRouter.js';
 
 
 //setup basic server

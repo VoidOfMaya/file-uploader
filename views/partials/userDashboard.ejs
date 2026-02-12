@@ -4,7 +4,16 @@
 <button>Upload</button>
 </form>
 <button id="show-folder-creation-dialog" type="button">create Folder</button>
+<section id="my-folders">
+    <% if(folders){ %>
+        <ul>
+        <% folders.forEach(folder => { %>
+            <li> <%= folder.name %> </li>            
+        </ul>
+        <% })%>
+    <% } %>
 
+</section>
 <section id="my-files">
     <%if(files){%>
         <ul>

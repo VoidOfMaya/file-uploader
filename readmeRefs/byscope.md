@@ -49,9 +49,9 @@
 ---
 
 ## 5) Folder CRUD
-- [pending] GET `/folders` (list user folders)
+- [X] GET `/folders` (list user folders)
 - [pending] GET `/:id` (view folder)
-- [pending] POST `/folders/new` (create folder)
+- [X] POST `/folders/new` (create folder)
 - [pending] POST `/folders/edit` (edit form)
 - [ ] POST `/folders/update` (rename folder)
 - [pending] POST `/folders/delete` (delete folder)
@@ -92,10 +92,10 @@
 ---
 
 ## 9) UX & Navigation
-- [ ] Create dashboard view
-- [ ] Display folders in dashboard
+- [pending] Create dashboard view
+- [pending] Display folders in dashboard
 - [ ] Display files inside selected folder
-- [ ] Add navigation bar (login/logout/dashboard)
+- [pending] Add navigation bar (login/logout/dashboard)
 - [X] Handle empty state (“No files yet”)
 
 ---
