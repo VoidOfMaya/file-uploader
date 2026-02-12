@@ -13,41 +13,10 @@
     <main>
 
         <% if(user){ %>
-            <h3>welcome <%= user.firstName %></h3>
-            <form action="/upload/file" method="post" enctype="multipart/form-data">
-            <input type="file" name="upFile" />
-            <button>Upload</button>
-            </form>
-            <a href="/auth/logout">logout</a>            
-            </div>
+            <%- include('partials/userDashboard') %>   
         <% } else { %>
-            <h3>please log in!</h3>
-            <form method="post" action="/auth/login">
-                <label for="username">Username:</label>
-                <input name="username" type="text">
-
-                <label for="password">Password</label>
-                <input name="password" type="password">
-                <button>log in</button>
-            </form>
-            <button type="button" id="register-form">register</button>            
+            <%- include('partials/guestDashboard') %>
         <% } %>
-        <section id="my-files">
-            <%if(user && files){%>
-                <ul>
-                <% files.forEach(file => { %>
-                    <li> <%= file.originalName %>  
-                    <%= file.mimeType %>  
-                    <%= Math.round((file.size/ 1024)* 100)/100 %>Kb 
-                    <%= file.uploadTime %> </li>
-                <% }) %>
-    
-                </ul>
-            <% }else { %>
-                <p>your storage is empty!</p>
-            <% } %>
-
-        </section>
 
     </main>
 

@@ -1,0 +1,23 @@
+<h3>welcome <%= user.firstName %></h3>
+<form action="/upload/file" method="post" enctype="multipart/form-data">
+<input type="file" name="upFile" />
+<button>Upload</button>
+</form>
+<a href="/auth/logout">logout</a>
+
+<section id="my-files">
+    <%if(files){%>
+        <ul>
+        <% files.forEach(file => { %>
+            <li> <%= file.originalName %>  
+            <%= file.mimeType %>  
+            <%= Math.round((file.size/ 1024)* 100)/100 %>Kb 
+            <%= file.uploadTime %> </li>
+        <% }) %>
+    
+        </ul>
+    <% }else { %>
+        <p>your storage is empty!</p>
+    <% } %>
+
+</section>            
