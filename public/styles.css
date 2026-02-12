@@ -15,11 +15,16 @@ header{
 
 }
 main{
+    /*
+    notes for next time having a single layout source for main is causing toruble 
+    when switching between user and guest dashboards, for next time  implement  a class  layout switch
+    based on if user is logged in or not
+    */
     flex: 1;
     display: grid;
     justify-items: center;
     align-items: center;
-    grid-template: 1fr 5fr 4fr/ 1fr ;
+    grid-template: 1fr 8fr 1fr/ 1fr ;
 
 }
 /* guest dashboard*/
@@ -34,19 +39,23 @@ main{
 }
 /* user dashboard*/
 #storage-container{
+    background-color: rgb(255, 250, 250);
     display:grid;
-    grid-template: repeat( 10, 1fr)/repeat( 5, 1fr);
+    grid-template-columns: repeat( auto-fit, minmax( 70px, 1fr));
+    width: 100%;
+    align-self: start;
     align-items: center;
     justify-items: center;
-    padding: 15px;
     gap: 5px;
+    height: 100%;
 }
+/*
 #storage-creation{
     justify-self: center;
     align-self: center;
     
-   
 }
+*/
 .field{
     display: grid;
     grid-template: 1fr  /1fr 1fr;
@@ -85,10 +94,6 @@ button:hover{
     outline: 1px solid rgb(164, 165, 168);
     background-color: rgb(17, 21, 39);
     color: white;
-}
-
-#sign-up-form{
-
 }
 .invalid-input{
     outline: 1px solid red;

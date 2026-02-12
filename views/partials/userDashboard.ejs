@@ -1,8 +1,6 @@
-<h3>welcome <%= user.firstName %></h3><a href="/auth/logout">logout</a>
-
-
-
-
+<section id="user-info">
+    <h3>welcome <%= user.firstName %></h3><a href="/auth/logout">logout</a>
+</section>
 
 <section id="storage-container">
     <% if(folders){ %>
@@ -39,6 +37,7 @@
         <p>your storage is empty!</p>
     <% } %>          
 </section>
+
 <section id="storage-creation">
     <form action="/upload/file" method="post" enctype="multipart/form-data">
     <input type="file" id="upFile" name="upFile"  style="display: none;"/>
