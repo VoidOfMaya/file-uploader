@@ -28,19 +28,22 @@ async function prismaAddFile(fileObj){
     })
 }
 async function prismaGetFilesByUserId(userId) {
-    return await prisma.file.findMany({where: {userId:  userId}});
+    return await prisma.file.findMany({where: {userId}});
 }
 async function prismaGetFilesByFolderId(folderId) {
-    return await prisma.file.findMany({where: {folderId:  folderId}});
+    return await prisma.file.findMany({where: {folderId}});
 }
 async function prismaGetFileById(id) {
-    
+    return await prisma.file.findUnique({where: {id}});   
 }
 async function prismaUpdateFile(id, update) {
-    
+    await prisma.file.update({
+        where: {id},
+        data: update
+    })
 }
 async function prismaDeleteFile(id) {
-    
+    return await prisma.file.delete({where: {id}})
 }
 
 export{

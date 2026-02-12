@@ -6,7 +6,7 @@ async function prismaGetFoldersByUserId(userId){
 }
 // get folder page by id
 async function prismaGetFolderById(id) {
-    
+    return await prisma.folder.findUnique({where:{id}})
 }
 //post create folder
 async function prismaCreateFolder(userId ,name) {
@@ -18,13 +18,16 @@ async function prismaCreateFolder(userId ,name) {
     })
 }
 //post edit folder by id
-async function prismaEditFolder(id,params) {
-    
+async function prismaEditFolder(id,update) {
+     await prisma.folder.update({
+        where: {id},
+        data: update
+    })
 }
 
 //post delete folder by id
 async function prismaDeleteFolder(id) {
-    
+    await prisma.folder.delete({where:{id}})
 }
 
 export{
