@@ -23,12 +23,15 @@ async function prismaAddFile(fileObj){
             mimeType:       fileObj.mimeType,          
             size:           fileObj.size,    //size is in bytes          
             path:           fileObj.path,
-            folderId:        fileObj.folderId,
+            folderId:       fileObj.folderId, //if provided saves file un
         }
     })
 }
-async function prismaGetFiles(ownerId) {
-    return await prisma.file.findMany({where: {userId:  ownerId}});
+async function prismaGetFilesByUserId(userId) {
+    return await prisma.file.findMany({where: {userId:  userId}});
+}
+async function prismaGetFilesByFolderId(folderId) {
+    return await prisma.file.findMany({where: {folderId:  folderId}});
 }
 async function prismaGetFileById(id) {
     
@@ -42,7 +45,8 @@ async function prismaDeleteFile(id) {
 
 export{
     prismaAddFile,
-    prismaGetFiles,
+    prismaGetFilesByUserId,
+    prismaGetFilesByFolderId,
     prismaGetFileById,
     prismaUpdateFile,
     prismaDeleteFile,

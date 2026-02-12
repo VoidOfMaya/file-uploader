@@ -1,8 +1,8 @@
 import {prisma} from '../lib/prisma.js';
  //basic CRUD
 //get all folders
-async function prismaGetAllFolders(){
-
+async function prismaGetFoldersByUserId(userId){
+    return await prisma.folder.findMany({where: {userId:  userId}});
 }
 // get folder page by id
 async function prismaGetFolderById(id) {
@@ -10,7 +10,12 @@ async function prismaGetFolderById(id) {
 }
 //post create folder
 async function prismaCreateFolder(userId ,name) {
-    
+    await prisma.folder.create({
+        data:{
+            name:      name,
+            userId:    userId,
+        }
+    })
 }
 //post edit folder by id
 async function prismaEditFolder(id,params) {
@@ -24,7 +29,7 @@ async function prismaDeleteFolder(id) {
 
 export{
     prismaCreateFolder,
-    prismaGetAllFolders,
+    prismaGetFoldersByUserId,
     prismaGetFolderById,
     prismaEditFolder,
     prismaDeleteFolder,

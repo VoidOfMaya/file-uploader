@@ -1,9 +1,9 @@
-<h3>welcome <%= user.firstName %></h3>
+<h3>welcome <%= user.firstName %></h3><a href="/auth/logout">logout</a>
 <form action="/upload/file" method="post" enctype="multipart/form-data">
 <input type="file" name="upFile" />
 <button>Upload</button>
 </form>
-<a href="/auth/logout">logout</a>
+<button id="show-folder-creation-dialog" type="button">create Folder</button>
 
 <section id="my-files">
     <%if(files){%>
@@ -21,3 +21,31 @@
     <% } %>
 
 </section>            
+
+<dialog id="create-folder-dialog">
+    <form method="post" action="/folders/new">
+        <label for="folderName">Folder name: </label>
+        <input name="folderName" type="text" min="1" max="20" required/>
+        <button id="create-folder-btn">Create</button>
+    </form>
+    <button type="button" id="cancel-dialog">cancel</button>
+</dialog>
+
+<script>
+    const openDialog = document.getElementById('show-folder-creation-dialog');
+    const dialog = document.getElementById('create-folder-dialog');
+    const submitBtn = document.getElementById('create-folder-btn');
+    const cancelBtn = document.getElementById('cancel-dialog');
+
+    openDialog.addEventListener('click',()=>{
+        dialog.showModal();
+    })
+
+    submitBtn.addEventListener('click',()=>{
+        dialog.close();
+    })
+    cancelBtn.addEventListener('click',()=>{
+        dialog.close();
+    })
+
+</script>
