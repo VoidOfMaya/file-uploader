@@ -8,6 +8,7 @@ import {authRouter} from './Auth/authRouter.js'
 import { setSession, setPassport } from './Auth/authMidWare.js';
 import passport from 'passport';
 import { fileRouter } from './file/fileRouter.js';
+import { folderRouter } from './folder/foderRouter.js';
 
 
 //setup basic server
@@ -42,6 +43,7 @@ app.use(passport.session());
 app.use('/', defaultRouter);
 app.use('/auth',authRouter);
 app.use('/upload',fileRouter);
+app.use('/folders',folderRouter);
 
 //listining setup
 

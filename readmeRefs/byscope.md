@@ -49,12 +49,12 @@
 ---
 
 ## 5) Folder CRUD
-- [ ] GET `/folders` (list user folders)
-- [ ] GET `/folders/new` (create form)
-- [ ] POST `/folders` (create folder)
-- [ ] GET `/folders/:id/edit` (edit form)
-- [ ] POST `/folders/:id/update` (rename folder)
-- [ ] POST `/folders/:id/delete` (delete folder)
+- [pending] GET `/folders` (list user folders)
+- [pending] GET `/:id` (view folder)
+- [pending] POST `/folders/new` (create folder)
+- [pending] POST `/folders/edit` (edit form)
+- [ ] POST `/folders/update` (rename folder)
+- [pending] POST `/folders/delete` (delete folder)
 - [ ] Ensure only owner can modify their folders
 
 ---

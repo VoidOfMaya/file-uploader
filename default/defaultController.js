@@ -1,5 +1,6 @@
 import { prismaGetFiles } from "../queries/queries.js"
 
+//gets all available folders and files owned by user
 export default async function getHomePage(req, res){
     let files;
     if(req.user){
