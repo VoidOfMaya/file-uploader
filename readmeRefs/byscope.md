@@ -54,8 +54,8 @@
 - [X] POST `/folders/new` (create folder)
 - [X] POST `/folders/edit` (edit form)
 - [X] POST `/folders/update` (add files to folder folder)
-- [pending] POST `/folders/delete` (delete folder)
-- [ ] Ensure only owner can modify their folders
+- [X] POST `/folders/delete` (delete folder)
+- [X] Ensure only owner can modify their folders
 
 ---
 
@@ -93,8 +93,8 @@
 
 ## 9) UX & Navigation
 - [pending] Create dashboard view
-- [pending] Display folders in dashboard
-- [ ] Display files inside selected folder
+- [X] Display folders in dashboard
+- [X] Display files inside selected folder
 - [pending] Add navigation bar (login/logout/dashboard)
 - [X] Handle empty state (“No files yet”)
 

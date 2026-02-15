@@ -29,7 +29,17 @@ async function prismaEditFolder(id,update) {
 
 //post delete folder by id
 async function prismaDeleteFolder(id) {
-    await prisma.folder.delete({where:{id}})
+    await prisma.$transaction([
+        prisma.file.updateMany({
+            where:{folderId: id},
+            data:{folderId: null}
+        }),
+        prisma.folder.delete({
+            where:{id},
+            
+        })     
+    ])
+
 }
 
 export{

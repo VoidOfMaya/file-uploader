@@ -1,4 +1,4 @@
-import { prismaCreateFolder, prismaGetFolderById, prismaEditFolder } from "../queries/folderQueries.js";
+import { prismaCreateFolder, prismaGetFolderById, prismaEditFolder, prismaDeleteFolder } from "../queries/folderQueries.js";
 import { validationResult, matchedData } from "express-validator";
 
 async function folders(req, res){
@@ -42,10 +42,21 @@ async function editFolder(req, res) {
     }
 
 }
+async function DeleteFolder(req, res) {
+    const folderId = Number(req.body.folderId)
+    try{
+        await prismaDeleteFolder(folderId)
+        console.log('deleted folder')
+    }catch(err){
+        console.log(err)
+    }
+    res.status(200).json({success: true});
+}
 
 export{
     folders,
     createFolder,
     getFolderById,
-    editFolder
+    editFolder,
+    DeleteFolder
 }

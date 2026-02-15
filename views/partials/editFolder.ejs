@@ -4,7 +4,32 @@
         <input type="hidden" name="folderId" value="<%= folder.id %>">
         <input id="name" name="folderName">
         <button>submit change</button>
-        <button formaction="/delete">delete folder</button>
+        <button id="delete-folder-btn"
+                type="button" 
+                name="deleteFolderId" 
+                value="<%- folder.id %>">
+                delete folder
+        </button>
         <button type="button" id="cancel-edit-folder-btn">cancel</button>
     </form>
 </dialog>
+
+<script>
+const deleteFolder = document.getElementById('delete-folder-btn');
+
+deleteFolder.addEventListener('click',async ()=>{
+    let confirmation = confirm(`you are about to delete folder at id: ${deleteFolder.value},on this action all related files will be realocated to the home page,do you wish to continue?`)
+    if(confirmation){
+        console.log(`preform delete...`)
+        const res = await fetch(`/folders/delete`,{
+                    method: "POST",
+                    headers: { "content-Type": "application/json"},
+                    body: JSON.stringify({folderId: deleteFolder.value})
+                })
+        if(res.ok){
+            window.location.href = '/';
+        }
+
+    }
+})
+</script>
