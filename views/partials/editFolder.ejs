@@ -1,7 +1,8 @@
 <dialog id="edit-folder-dialog">
-    <form method="post" action="/edit">
+    <form method="post" action="/folders/edit">
         <label for="name">Foldername:</label>
-        <input id="name" name="foldeName">
+        <input type="hidden" name="folderId" value="<%= folder.id %>">
+        <input id="name" name="folderName">
         <button>submit change</button>
         <button formaction="/delete">delete folder</button>
         <button type="button" id="cancel-edit-folder-btn">cancel</button>

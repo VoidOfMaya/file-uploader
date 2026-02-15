@@ -1,4 +1,4 @@
-import { prismaCreateFolder, prismaGetFolderById } from "../queries/folderQueries.js";
+import { prismaCreateFolder, prismaGetFolderById, prismaEditFolder } from "../queries/folderQueries.js";
 import { validationResult, matchedData } from "express-validator";
 
 async function folders(req, res){
@@ -31,9 +31,21 @@ async function getFolderById(req, res) {
     }
     
 }
+async function editFolder(req, res) {
+
+    const data = req.body
+    try{
+        await prismaEditFolder( Number(data.folderId),data.folderName) ;
+        res.redirect(`/folders/${data.folderId}?`);       
+    }catch(err){
+        console.log(err)
+    }
+
+}
 
 export{
     folders,
     createFolder,
     getFolderById,
+    editFolder
 }

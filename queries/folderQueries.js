@@ -23,7 +23,7 @@ async function prismaCreateFolder(userId ,name) {
 async function prismaEditFolder(id,update) {
      await prisma.folder.update({
         where: {id},
-        data: update
+        data: {name: update}
     })
 }
 
