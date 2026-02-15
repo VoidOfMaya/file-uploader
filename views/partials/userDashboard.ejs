@@ -22,20 +22,20 @@
     <% } %>
     <%if(files){%> 
         <% files.forEach(file => { %>
-            <div class="file-Btn storage-Btn">
-                <img src="/icons/file-solid-full.svg" 
-                    alt="folder" 
-                    width="50" 
-                    height="50">
-                <div style="white-space: nowarp; text-overflow: ellipsis; overflow: hidden;"><%= file.originalName %></div> 
-                <button>edit</button>
-                <button>delete</button> 
-            <!-- following fields should be displayed in an about file dialog
-            <%= file.mimeType %>  
-            <%= Math.round((file.size/ 1024)* 100)/100 %>Kb 
-            <%= file.uploadTime %>
-            --> 
-            </div>
+                <div class="file-Btn storage-Btn">
+                    <img src="/icons/file-solid-full.svg" 
+                        alt="folder" 
+                        width="50" 
+                        height="50">
+                    <div style="white-space: nowarp; text-overflow: ellipsis; overflow: hidden;"><%= file.originalName %></div> 
+                    <button>edit</button>
+                    <button>delete</button> 
+                <!-- following fields should be displayed in an about file dialog
+                <%= file.mimeType %>  
+                <%= Math.round((file.size/ 1024)* 100)/100 %>Kb 
+                <%= file.uploadTime %>
+                --> 
+                </div>            
         <% }) %>
     <% }else { %>
         <p>your storage is empty!</p>

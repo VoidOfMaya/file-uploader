@@ -14,5 +14,6 @@ export default async function getHomePage(req, res){
             console.log(err)
         }     
     }
-    res.render('homepage',{user: req.user, files: files, folders: folders})
+    //only showes files who lack a parent folder!
+    res.render('homepage',{user: req.user, files: files.filter(f => f.folderId === null), folders: folders})
 } 
