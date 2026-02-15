@@ -15,8 +15,7 @@ async function uploadFile(req, res){
    }
 
    try{       
-      if(!req.file) return res.redirect('/');
-         
+      if(!req.file) return res.redirect('/');     
       const result = await cloudUpload(req.file.buffer);
       console.log('uploaded to cloudinary')
 
@@ -24,6 +23,10 @@ async function uploadFile(req, res){
          console.log('ERROR: no secure path found0')
          res.redirect('/');
       }
+      // handles file upload from folder
+      
+      const id = req.body.folderId? Number(req.body.folderId) : null;
+
       //prisma takes a fileobj that has the following
       const fileObj ={
          userId :        req.user.id,
@@ -32,15 +35,15 @@ async function uploadFile(req, res){
          mimeType:       req.file.mimetype,          
          size:           req.file.size,           
          path:           result.secure_url,
-         folderId:       null               //implement folderid get if file is created inside a folder
+         folderId:       id             //implement folderid get if file is created inside a folder
       }
       await prismaAddFile(fileObj);
-      console.log('added to DB')
+      console.log('added to db');
       
    }catch(err){
       console.log(err)
    }
-   res.redirect('/');
+   req.body.folderId? res.redirect(`/folders/${req.body.folderId}?`): res.redirect('/');
  }
 
  export{

@@ -52,7 +52,7 @@
 - [X] GET `/folders` (list user folders)
 - [X] GET `/:id` (view folder)
 - [X] POST `/folders/new` (create folder)
-- [pending] POST `/folders/edit` (edit form)
+- [X] POST `/folders/edit` (edit form)
 - [ ] POST `/folders/update` (add files to folder folder)
 - [pending] POST `/folders/delete` (delete folder)
 - [ ] Ensure only owner can modify their folders
