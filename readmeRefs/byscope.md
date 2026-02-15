@@ -50,7 +50,7 @@
 
 ## 5) Folder CRUD
 - [X] GET `/folders` (list user folders)
-- [pending] GET `/:id` (view folder)
+- [X] GET `/:id` (view folder)
 - [X] POST `/folders/new` (create folder)
 - [pending] POST `/folders/edit` (edit form)
 - [ ] POST `/folders/update` (rename folder)

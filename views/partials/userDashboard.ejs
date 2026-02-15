@@ -10,8 +10,11 @@
                     alt="folder" 
                     width="50" 
                     height="50">
-                <div style="white-space: nowarp; text-overflow: ellipsis;  overflow: hidden;" ><%= folder.name %> </div> 
-                <button>edit</button>
+                <div style="white-space: nowarp; text-overflow: ellipsis;  overflow: hidden;" ><%= folder.name %> </div>
+                <form method="get" action="/folders/<%= folder.id %>">
+                    <button>view</button>                    
+                </form> 
+
                 <button>delete</button> 
             </div> 
         

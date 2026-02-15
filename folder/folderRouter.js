@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { folders,createFolder } from "./folderController.js";
+import { folders,createFolder, getFolderById } from "./folderController.js";
 import {validateFolderName} from '../validations/validate.js'
 
 const folderRouter = Router();
@@ -7,7 +7,7 @@ const folderRouter = Router();
 //get all folders
 folderRouter.get('/All',folders)
 // get folder page
-folderRouter.get('/:id',folders)
+folderRouter.get('/:id',getFolderById)
 //post create folder
 folderRouter.post('/new',validateFolderName,createFolder)
 //post edit folder

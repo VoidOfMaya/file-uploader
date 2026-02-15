@@ -6,7 +6,9 @@ async function prismaGetFoldersByUserId(userId){
 }
 // get folder page by id
 async function prismaGetFolderById(id) {
-    return await prisma.folder.findUnique({where:{id}})
+    return await prisma.folder.findUnique({
+        where:{id},
+        include: {files: true}});
 }
 //post create folder
 async function prismaCreateFolder(userId ,name) {

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+    <title>file-uploader</title>
+</head>
+<body>
+    <header>
+            <h1><a href="/">filoader</a></h1>
+    </header>
+    <main>
+
+        <% if(user){ %>
+            <%- include('partials/filesDialog') %>
+            <%- include('partials/editFolder') %>
+            <div id="folder-info">
+                <h1 style="margin-left: 10px;"><%= user.firstName %>/<%= folder.name %> </h1>
+                <div>
+                    <button id="add-file-for-folder">add file</button> 
+                    <button id="edit-folder-btn">edit</button>                      
+                </div> 
+         
+            </div>
+            <% if(folder.files.length === 0){ %>
+                <%folder.files.forEach(file =>{ %>
+                    <div class="file-Btn storage-Btn">
+                        <img src="/icons/file-solid-full.svg" 
+                            alt="folder" 
+                            width="50" 
+                            height="50">
+                        <div style="white-space: nowarp; text-overflow: ellipsis; overflow: hidden;"><%= file.originalName %></div> 
+                        <button>edit</button>
+                        <button>delete</button> 
+                    <!-- following fields should be displayed in an about file dialog
+                    <%= file.mimeType %>  
+                    <%= Math.round((file.size/ 1024)* 100)/100 %>Kb 
+                    <%= file.uploadTime %>
+                    --> 
+                    </div>
+                <% }) %>
+            <% }else{ %>
+                <div>this folder is empty!</div>
+            <% } %>
+            
+        <% } else { %>
+            <%- include('partials/guestDashboard') %>
+        <% } %>
+    </main>
+    <script>
+        //addd file dialog
+        const addFile = document.getElementById('add-file-for-folder');
+        const cancel = document.getElementById('cancel-add-file-dialog');
+        const dialog = document.getElementById('file-creation-dialog');
+
+        addFile.addEventListener('click',()=>{
+            dialog.showModal();
+        })
+        cancel.addEventListener('click',()=>{
+            dialog.close();
+        })
+        //edit folder info dialog
+        const editFolderDialog = document.getElementById('edit-folder-dialog');
+        const editFolderBtn = document.getElementById('edit-folder-btn');
+        const closeEditFolder = document.getElementById('cancel-edit-folder-btn');
+
+        editFolderBtn.addEventListener('click',()=>{
+            editFolderDialog.showModal();
+        })
+        closeEditFolder.addEventListener('click',()=>{
+            editFolderDialog.close();
+        })
+        
+    </script>
+    
+</body>
+</html>

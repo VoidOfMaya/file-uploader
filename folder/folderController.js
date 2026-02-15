@@ -1,4 +1,4 @@
-import { prismaCreateFolder } from "../queries/folderQueries.js";
+import { prismaCreateFolder, prismaGetFolderById } from "../queries/folderQueries.js";
 import { validationResult, matchedData } from "express-validator";
 
 async function folders(req, res){
@@ -21,8 +21,19 @@ async function createFolder(req, res){
 
     res.redirect('/');
 }
+async function getFolderById(req, res) {
+    const folderId = req.params.id;
+    try{
+        const data = await prismaGetFolderById(Number(folderId));
+        res.render('folderpage',{user: req.user, folder: data })
+    }catch(err){
+        console.log(err)
+    }
+    
+}
 
 export{
     folders,
     createFolder,
+    getFolderById,
 }
