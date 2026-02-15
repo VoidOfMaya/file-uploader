@@ -41,7 +41,7 @@
 ## 4) File Upload Basics
 - [X] Configure Multer (memoryStorage)
 - [X] Add file size limits
-- [ ] Add file type filtering
+- [X] Add file type filtering
 - [X] Create upload route (`POST /files/upload`)
 - [X] Store file metadata in DB (without cloud first, if testing)
 - [X] Ensure upload is restricted to authenticated users
@@ -60,7 +60,6 @@
 ---
 
 ## 6) File Metadata & Download
-- [ ] GET `/files/:id` (file detail page)
 - [X] Display:
   - [X] Original name
   - [X] Size (formatted KB/MB)
