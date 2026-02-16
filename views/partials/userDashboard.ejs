@@ -1,12 +1,14 @@
 <section id="file-info">
-    <h3>welcome <%= user.firstName %></h3><a href="/auth/logout">logout</a>
-    <section id="storage-creation">
+    <div style="display: flex; flex-direction: row; align-items: center;">
+        <h1>welcome <%= user.firstName %></h1> <a href="/auth/logout">logout</a>
+    </div>
+    <section id="storage-creation" style="justify-self: end;">
         <form action="/upload/file" method="post" enctype="multipart/form-data">
 
-            <label for="upFile" style="cursor: pointer;">add file +</label>
+            <label for="upFile" id="add-file-btn">add file +</label>
             <input type="file" id="upFile" name="upFile" style="display: none;" />
         
-            <button style="height: 100%; margin-right: 20px;">Upload</button>
+            <button style="height: 100%;">Upload</button>
         </form>
         <button id="show-folder-creation-dialog" type="button">create Folder</button>
     </section>

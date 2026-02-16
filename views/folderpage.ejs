@@ -17,9 +17,9 @@
             <%- include('partials/editFolder') %>
             <div id="folder-info">
                 <h1 style="margin-left: 10px;"><%= user.firstName %>/<%= folder.name %> </h1>
-                <div>
-                    <button id="add-file-for-folder">add file</button> 
-                    <button id="edit-folder-btn">edit</button>                      
+                <div style="height: 100%; display: flex;flex-direction: row; gap: 5px;">
+                    <button style="flex: 1;" id="add-file-for-folder">add file</button> 
+                    <button style="flex: 1;" id="edit-folder-btn">edit</button>                      
                 </div> 
          
             </div>
