@@ -78,7 +78,7 @@
 - [X] Store:
   - [X] `secure_url`
   - [X] `public_id`
-- [ ] Delete file from Cloudinary when deleting from DB
+- [ ] downolad file from Cloudinary when deleting from DB
 
 ---
 

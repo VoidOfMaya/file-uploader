@@ -1,7 +1,8 @@
 import {cloudUpload} from './cloudinary.service.js'
-import { prisma } from '../lib/prisma.js';
+import http from 'http'
+import https from 'https'
 import { matchedData, validationResult } from 'express-validator';
-import { prismaAddFile } from '../queries/fileQueries.js';
+import { prismaAddFile, prismaGetFileById } from '../queries/fileQueries.js';
  
 async function uploadFile(req, res){
    //first validate and mutate data
@@ -45,7 +46,28 @@ async function uploadFile(req, res){
    }
    req.body.folderId? res.redirect(`/folders/${req.body.folderId}?`): res.redirect('/');
  }
+async function downloadFile(req, res) {
+   const fileId = Number(req.params.id);
+   try{
+      const file = await prismaGetFileById(fileId);
+      res.setHeader('Content-Disposition', `attachement: filename="${file.originalName}"`);
+      res.setHeader('Content-Type', "application/octet-stream");
 
+       const cloudinaryUrl = file.path
+
+       const client = cloudinaryUrl.startsWith('https')? https : http;
+
+       client.get(cloudinaryUrl, (response)=>{
+         response.pipe(res);
+       }).on('error',(err)=>{
+         console.log(err)
+       })
+
+   }catch(err){
+      console.log(err)
+   }
+}
  export{
-    uploadFile
+    uploadFile,
+    downloadFile
  }

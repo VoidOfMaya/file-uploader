@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { uploadFile } from "./fileController.js";
+import { uploadFile, downloadFile } from "./fileController.js";
 import multer from 'multer';
 import { fileUser } from "../validations/validate.js";
 
@@ -28,6 +28,7 @@ const upload = multer({storage: storage,limits:
 const fileRouter = Router();
 
 fileRouter.post('/file',upload.single('upFile'),uploadFile);
+fileRouter.get('/download/:id',downloadFile)
 
 export{
     fileRouter

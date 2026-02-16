@@ -55,7 +55,12 @@
                     <div><%= Math.round((file.size/ 1024)* 100)/100 %>Kb </div>
                     <div> <%= new Date(file.uploadTime).toLocaleTimeString() %> 
                         <%= new Date(file.uploadTime).toLocaleDateString() %></div>
-                    <button type="button" id="download-file">download</button> 
+                    
+                    <a href="/upload/download/<%= file.id%>" download="<%= file.originalName %>">download</a> 
+                    
+                    -                      
+
+
                 </div>            
         <% }) %>
     <% }else { %>
