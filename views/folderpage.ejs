@@ -9,7 +9,9 @@
 <body>
     <header style="display: flex; flex-direction: row; align-items: center;">
             <h1 style="flex: 1;"><a href="/">filoader</a></h1>
+            <% if(user){ %>
             <a href="/auth/logout" style="justify-self: end; padding: 20px;">logout</a>
+            <% }%>
     </header>
     <main>
         <% if(user){ %>
@@ -33,7 +35,7 @@
                             <div><%= Math.round((file.size/ 1024)* 100)/100 %>Kb </div>
                             <div> <%= new Date(file.uploadTime).toLocaleTimeString() %> 
                                 <%= new Date(file.uploadTime).toLocaleDateString() %></div>
-                            <button type="button" id="download-file">download</button> 
+                            <a href="/upload/download/<%= file.id%>" download="<%= file.originalName %>">download</a> 
                         </div>
                     <% }) %>
                 <% }else{ %>

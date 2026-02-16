@@ -57,10 +57,7 @@
                         <%= new Date(file.uploadTime).toLocaleDateString() %></div>
                     
                     <a href="/upload/download/<%= file.id%>" download="<%= file.originalName %>">download</a> 
-                    
-                    -                      
-
-
+        
                 </div>            
         <% }) %>
     <% }else { %>

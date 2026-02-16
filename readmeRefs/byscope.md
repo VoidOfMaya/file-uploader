@@ -78,7 +78,7 @@
 - [X] Store:
   - [X] `secure_url`
   - [X] `public_id`
-- [ ] downolad file from Cloudinary when deleting from DB
+- [X] downolad file from Cloudinary when deleting from DB
 
 ---
 
@@ -94,7 +94,7 @@
 - [X] Create dashboard view
 - [X] Display folders in dashboard
 - [X] Display files inside selected folder
-- [pending] Add navigation bar (login/logout/dashboard)
+- [X] Add navigation bar (login/logout/dashboard)
 - [X] Handle empty state (“No files yet”)
 
 ---
