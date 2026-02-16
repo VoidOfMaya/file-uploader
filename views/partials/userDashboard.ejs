@@ -1,4 +1,4 @@
-<section id="user-info">
+<section id="file-info">
     <h3>welcome <%= user.firstName %></h3><a href="/auth/logout">logout</a>
     <section id="storage-creation">
         <form action="/upload/file" method="post" enctype="multipart/form-data">
@@ -6,7 +6,7 @@
             <label for="upFile" style="cursor: pointer;">add file +</label>
             <input type="file" id="upFile" name="upFile" style="display: none;" />
         
-            <button>Upload</button>
+            <button style="height: 100%; margin-right: 20px;">Upload</button>
         </form>
         <button id="show-folder-creation-dialog" type="button">create Folder</button>
     </section>
@@ -16,19 +16,15 @@
     <% if(folders){ %>   
         <% folders.forEach(folder => { %>
             <div class="folder-Btn storage-Btn">
-                <img src="/icons/folder-solid-full.svg" 
-                    alt="folder" 
-                    width="50" 
-                    height="50">
+                <img src="/icons/folder-solid-full.svg" alt="folder" width="50" height="50">
                 <div style="white-space: nowarp; text-overflow: ellipsis;  overflow: hidden;" ><%= folder.name %> </div>
+                <span>Folder</span>
+                <span>---</span>
                 <form method="get" action="/folders/<%= folder.id %>">
-                    <button>view</button>                    
+                    <button style="width: 100%; height: 100%;">view</button>                    
                 </form> 
-
-                <button id="delete-folder-btn" 
-                        type="button" 
-                        name="deleteFolderId" 
-                        value="<%- folder.id %>">delete</button>
+                <button id="delete-folder-btn" type="button" name="deleteFolderId" value="<%- folder.id %>">delete</button>
+            
                 <script>
                 const deleteFolder = document.getElementById('delete-folder-btn');
 
