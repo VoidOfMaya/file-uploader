@@ -1,16 +1,12 @@
 <section id="file-info">
-    
+
         <h1>welcome <%= user.firstName %></h1> 
     
-    <section id="storage-creation" style="justify-self: end;">
-        <form action="/upload/file" method="post" enctype="multipart/form-data">
+    <section id="storage-creation" style="justify-self: end;"> 
 
-            <label for="upFile" id="add-file-btn">add file +</label>
-            <input type="file" id="upFile" name="upFile" style="display: none;" />
-        
-            <button style="height: 100%;">Upload</button>
-        </form>
+        <button type="button" style="height: 100%;" id="add-file-global">upload new file</button>
         <button id="show-folder-creation-dialog" type="button">create Folder</button>
+
     </section>
 </section>
 
@@ -77,21 +73,53 @@
     <button type="button" id="cancel-dialog">cancel</button>
 </dialog>
 
+<dialog id="create-file-dialog">
+    <h5>file type must be( .png/ .jpeg/ .webp/ .pdf/ .msword/ )</h5>
+    <form action="/upload/file" method="post" enctype="multipart/form-data" id="dialog-file-creation-form">
+        <input type="file" id="upFile" name="upFile"/>
+        <label for="upFile"></label>
+        <button id="upload-file-btn">Upload</button>
+        <button type="button" id="cancel-add-file-dialog">cancel</button>
+    </form>
+</dialog>
+
 <script>
+    //folder create dialog
     const openDialog = document.getElementById('show-folder-creation-dialog');
     const dialog = document.getElementById('create-folder-dialog');
     const submitBtn = document.getElementById('create-folder-btn');
     const cancelBtn = document.getElementById('cancel-dialog');
-
     openDialog.addEventListener('click',()=>{
         dialog.showModal();
     })
-
     submitBtn.addEventListener('click',()=>{
         dialog.close();
     })
     cancelBtn.addEventListener('click',()=>{
         dialog.close();
     })
+    //file create dialog
+    const openFiledialogBtn = document.getElementById('add-file-global');
+    const fileDialog = document.getElementById('create-file-dialog');
+    const cancelFileDialog= document.getElementById('cancel-add-file-dialog')
+    openFiledialogBtn.addEventListener('click',()=>{
+        fileDialog.showModal();
+    })
+    cancelFileDialog.addEventListener('click',()=>{
+        fileDialog.close();
+    })
+    //hanndle file upload validation
+    const input = document.getElementById('upFile');
+    const form = document.getElementById('dialog-file-creation-form');
+    const submitFileBtn = document.getElementById('upload-file-btn');
+
+    form.addEventListener('submit',(e)=>{
+        if( !input.files|| input.files.length === 0){
+            e.preventDefault();
+            alert("please select a file");
+        }
+    })
+
+
 
 </script>
