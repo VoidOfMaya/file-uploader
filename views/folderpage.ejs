@@ -7,11 +7,11 @@
     <title>file-uploader</title>
 </head>
 <body>
-    <header>
-            <h1><a href="/">filoader</a></h1>
+    <header style="display: flex; flex-direction: row; align-items: center;">
+            <h1 style="flex: 1;"><a href="/">filoader</a></h1>
+            <a href="/auth/logout" style="justify-self: end; padding: 20px;">logout</a>
     </header>
     <main>
-
         <% if(user){ %>
             <%- include('partials/filesDialog') %>
             <%- include('partials/editFolder') %>
@@ -23,30 +23,28 @@
                 </div> 
          
             </div>
-            <% if(folder.files.length > 0){ %>
-                <%folder.files.forEach(file =>{ %>
-                    <div class="file-Btn storage-Btn">
-                        <img src="/icons/file-solid-full.svg" 
-                            alt="folder" 
-                            width="50" 
-                            height="50">
-                        <div style="white-space: nowarp; text-overflow: ellipsis; overflow: hidden;"><%= file.originalName %></div> 
-                        <button>edit</button>
-                        <button>delete</button> 
-                    <!-- following fields should be displayed in an about file dialog
-                    <%= file.mimeType %>  
-                    <%= Math.round((file.size/ 1024)* 100)/100 %>Kb 
-                    <%= file.uploadTime %>
-                    --> 
-                    </div>
-                <% }) %>
-            <% }else{ %>
-                <div>this folder is empty!</div>
-            <% } %>
-            
-        <% } else { %>
-            <%- include('partials/guestDashboard') %>
-        <% } %>
+            <section class="storage-container">
+                <% if(folder.files.length > 0){ %>
+                    <%folder.files.forEach(file =>{ %>
+                        <div class="file-Btn storage-Btn">
+                            <img src="/icons/file-solid-full.svg" alt="folder" width="50" height="50">
+                            <div style="white-space: nowarp; text-overflow: ellipsis; overflow: hidden;"><%= file.originalName %></div>  
+                            <div><%= file.mimeType %> </div>
+                            <div><%= Math.round((file.size/ 1024)* 100)/100 %>Kb </div>
+                            <div> <%= new Date(file.uploadTime).toLocaleTimeString() %> 
+                                <%= new Date(file.uploadTime).toLocaleDateString() %></div>
+                            <button type="button" id="download-file">download</button> 
+                        </div>
+                    <% }) %>
+                <% }else{ %>
+                    <div>this folder is empty!</div>
+                <% } %>
+                
+            <% } else { %>
+                <%- include('partials/guestDashboard') %>
+            <% } %>                
+            </section>
+
     </main>
     <script>
         //addd file dialog

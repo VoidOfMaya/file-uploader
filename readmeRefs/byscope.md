@@ -91,7 +91,7 @@
 ---
 
 ## 9) UX & Navigation
-- [pending] Create dashboard view
+- [X] Create dashboard view
 - [X] Display folders in dashboard
 - [X] Display files inside selected folder
 - [pending] Add navigation bar (login/logout/dashboard)

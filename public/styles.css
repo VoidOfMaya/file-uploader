@@ -70,7 +70,7 @@ main{
     border-radius: 20px;
 
 }
-#storage-container{
+.storage-container{
     padding: 20px;
     background-color: rgb(255, 250, 250);
     border-radius: 20px;

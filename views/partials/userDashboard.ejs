@@ -1,7 +1,7 @@
 <section id="file-info">
-    <div style="display: flex; flex-direction: row; align-items: center;">
-        <h1>welcome <%= user.firstName %></h1> <a href="/auth/logout">logout</a>
-    </div>
+    
+        <h1>welcome <%= user.firstName %></h1> 
+    
     <section id="storage-creation" style="justify-self: end;">
         <form action="/upload/file" method="post" enctype="multipart/form-data">
 
@@ -14,7 +14,7 @@
     </section>
 </section>
 
-<section id="storage-container">
+<section class="storage-container">
     <% if(folders){ %>   
         <% folders.forEach(folder => { %>
             <div class="folder-Btn storage-Btn">

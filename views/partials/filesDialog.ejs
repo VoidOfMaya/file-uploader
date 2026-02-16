@@ -1,11 +1,25 @@
 <dialog id="file-creation-dialog">
+    <h5>file type must be( .png/ .jpeg/ .webp/ .pdf/ .msword/ )</h5>
     <form action="/upload/file" method="post" enctype="multipart/form-data">
-    <input type="file" id="upFile" name="upFile"  style="display: none;"/>
+    <input type="file" id="upFile" name="upFile"/>
     <label for="upFile">
-    <img src="/icons/plus-thick.svg" alt="add file" width="50" height="50">    
+ 
     </label>
     <input type="hidden" name="folderId" value="<%= folder.id %>">
-    <button>Upload</button>
+    <button id="upload-file-btn">Upload</button>
     <button type="button" id="cancel-add-file-dialog">cancel</button>
     </form>
+    <script>
+        const input = document.getElementById('upFile');
+        const form = document.getElementById('file-creation-dialog');
+        const submitBtn = document.getElementById('upload-file-btn');
+
+        form.addEventListener('submit',(e)=>{
+            if(input.files.length === 0){
+                e.preventDefault();
+                alert("please select a file");
+            }
+        })
+
+    </script>
 </dialog>
