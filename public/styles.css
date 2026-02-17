@@ -243,8 +243,4 @@ button:hover{
         border-radius: 15px;
         padding: 10px;
     }
-    /*unauthenticated*/
-    #log-in-form > button{
-        justify-self: stretch;
-    }
 }
