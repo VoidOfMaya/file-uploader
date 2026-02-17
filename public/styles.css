@@ -109,7 +109,6 @@ main{
     gap: 5px;
     max-height: 100%;
 }
-
 .storage-Btn{
     outline: 1px solid gray;
     border-radius: 20px;
@@ -123,12 +122,10 @@ main{
     gap: 5px;
     align-content: center;
 }
-
 .storage-Btn:hover{
     background-color: rgb(255, 255, 255);
     outline: 1px solid rgb(0, 153, 255) ;
 }
-
 #storage-creation{
     height: 100%;
     display: flex;
@@ -138,7 +135,6 @@ main{
     gap: 5px;
     
 }
-
 .field{
     display: grid;
     grid-template: 1fr  /1fr 1fr;
@@ -191,6 +187,10 @@ button:hover{
     outline: 1px solid green;
     outline-offset: 1px;
 }
+/**/
+#create-file-dialog{
+
+}
 @media (min-width: 1280px) {
     header{
         width: 1280px; 
@@ -208,6 +208,7 @@ button:hover{
     main{
         height: min-content;
     }
+    /*authenticated*/
     #file-info{
         margin: 0px;
         grid-template-columns: 1fr ; 
@@ -235,7 +236,6 @@ button:hover{
         grid-template-columns: 1fr 1fr ;
         grid-template-rows: 1fr 1fr 2fr;
     }
-    
     .file-Btn > a {
         color: rgb(255, 255, 255);
         background-color: rgb(47, 164, 241);
@@ -243,6 +243,8 @@ button:hover{
         border-radius: 15px;
         padding: 10px;
     }
-        
-
+    /*unauthenticated*/
+    #log-in-form > button{
+        justify-self: stretch;
+    }
 }
