@@ -4,7 +4,7 @@ import https from 'https'
 import { matchedData, validationResult } from 'express-validator';
 import { prismaAddFile, prismaGetFileById } from '../queries/fileQueries.js';
  
-async function uploadFile(req, res){
+async function uploadFile(req, res, next){
    //first validate and mutate data
 
    //handle data upload:
@@ -42,11 +42,11 @@ async function uploadFile(req, res){
       console.log('added to db');
       
    }catch(err){
-      console.log(err)
+      next(err)
    }
    req.body.folderId? res.redirect(`/folders/${req.body.folderId}?`): res.redirect('/');
  }
-async function downloadFile(req, res) {
+async function downloadFile(req, res, next) {
    const fileId = Number(req.params.id);
    try{
       const file = await prismaGetFileById(fileId);
@@ -64,7 +64,7 @@ async function downloadFile(req, res) {
        })
 
    }catch(err){
-      console.log(err)
+      next(err)
    }
 }
  export{

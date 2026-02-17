@@ -44,8 +44,17 @@ app.use('/', defaultRouter);
 app.use('/auth',authRouter);
 app.use('/upload',fileRouter);
 app.use('/folders',folderRouter);
+
+//error handelling routes
+
 app.use((req, res)=>{
-    res.render('404')
+    console.log('404. middleware reached');
+    res.status(404).render('404')
+})
+// global server error
+app.use((err, req,res, next)=>{
+    console.error(err);
+    res.status(500).render('500',{errorMsg: err})
 })
 
 //listining setup
