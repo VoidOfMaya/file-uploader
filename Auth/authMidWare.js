@@ -64,8 +64,14 @@ passport.deserializeUser(async(id, done)=>{
     }
 });
 }
-
+function checkAuth (req, res, next){
+    if(!req.user){
+        return res.redirect('/');
+    }
+    next();
+}
 export{
     setSession,
     setPassport,
+    checkAuth,
 }

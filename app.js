@@ -5,7 +5,7 @@ import'dotenv/config';
 
 import {defaultRouter}  from './default/defaultRouter.js';
 import {authRouter} from './Auth/authRouter.js'
-import { setSession, setPassport } from './Auth/authMidWare.js';
+import { setSession, setPassport, checkAuth } from './Auth/authMidWare.js';
 import passport from 'passport';
 import { fileRouter } from './file/fileRouter.js';
 import { folderRouter } from './folder/folderRouter.js';
@@ -40,10 +40,10 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //router setup
-app.use('/', defaultRouter);
+app.use('/', defaultRouter); //protected: has authcheck integrated within controller logic 
 app.use('/auth',authRouter);
-app.use('/upload',fileRouter);
-app.use('/folders',folderRouter);
+app.use('/upload',checkAuth,fileRouter);// protected
+app.use('/folders',checkAuth,folderRouter);//protected
 
 //error handelling routes
 
