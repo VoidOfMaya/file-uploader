@@ -9,20 +9,17 @@ async function uploadFile(req, res, next){
 
    //handle data upload:
    const errors = validationResult(req);
-
    if(!errors.isEmpty){
       console.log(errors.array());
       res.redirect('/');
    }
-
-   try{       
-      if(!req.file) return res.redirect('/');     
+   try{            
       const result = await cloudUpload(req.file.buffer);
       console.log('uploaded to cloudinary')
-
-      if(!result.secure_url){
-         console.log('ERROR: no secure path found0')
-         res.redirect('/');
+      
+      //checks if cloudinary  returned the correct objects
+      if(!result.secure_url){ 
+         return next(new Error('internal Error: cloudinary url faulty, try again later!'))
       }
       // handles file upload from folder
       
@@ -60,7 +57,7 @@ async function downloadFile(req, res, next) {
        client.get(cloudinaryUrl, (response)=>{
          response.pipe(res);
        }).on('error',(err)=>{
-         console.log(err)
+         next(err)
        })
 
    }catch(err){
