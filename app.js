@@ -48,7 +48,6 @@ app.use('/folders',checkAuth,folderRouter);//protected
 //error handelling routes
 
 app.use((req, res)=>{
-    console.log('404. middleware reached');
     res.status(404).render('404')
 })
 // global server error

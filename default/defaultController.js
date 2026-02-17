@@ -11,7 +11,7 @@ export default async function getHomePage(req, res, next){
           files = await prismaGetFilesByUserId(Number(req.user.id));
           folders = await prismaGetFoldersByUserId(Number(req.user.id)); 
         }catch(err){
-            next(err)
+            return next(err)
         }     
     }
    const childFiles = (files ?? []).filter(f => f.folderId === null);
