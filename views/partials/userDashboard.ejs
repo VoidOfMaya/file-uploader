@@ -11,7 +11,10 @@
 </section>
 
 <section class="storage-container">
-    <% if(folders){ %>   
+    <% if(folders.length === 0 && files.length === 0){ %>
+        <div style="width: fit-content; align-self: center; font-size: 22px; color: rgb(90, 89, 89);">your storage is empty!</div>
+    <% } %>
+    <% if(folders.length > 0 ){ %>   
         <% folders.forEach(folder => { %>
             <div class="folder-Btn storage-Btn">
                 <img src="/icons/folder-solid-full.svg" alt="folder" width="50" height="50">
@@ -46,7 +49,7 @@
         
         <% })%>
     <% } %>
-    <%if(files){%> 
+    <%if(files.length > 0 ){%> 
         <% files.forEach(file => { %>
                 <div class="file-Btn storage-Btn">
                     <img src="/icons/file-solid-full.svg" alt="folder" width="50" height="50">
@@ -60,10 +63,7 @@
         
                 </div>            
         <% }) %>
-    <% }else { %>
-        <p>your storage is empty!</p>
-    <% } %>
-        
+    <% } %>        
 </section>
 
 <dialog id="create-folder-dialog">

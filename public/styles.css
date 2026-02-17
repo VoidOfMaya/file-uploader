@@ -150,7 +150,7 @@ label{
     align-self: center;
 }
 input{
-    color: white;
+    color: rgb(39, 39, 39);
     align-self: center;
     padding: 10px;
     border-radius: 10px;
