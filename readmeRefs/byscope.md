@@ -65,8 +65,8 @@
   - [X] Size (formatted KB/MB)
   - [X] mimetype
   - [X] Upload time
-- [ ] GET `/files/:id/download`
-- [ ] Redirect or stream from stored cloud URL
+- [X] GET `/files/:id/download`
+- [X] Redirect or stream from stored cloud URL
 - [X] Ensure only owner can access their files
 
 ---
@@ -83,10 +83,10 @@
 ---
 
 ## 8) Validation & Error Handling
-- [ ] Handle upload errors gracefully
-- [ ] Handle DB errors
-- [ ] Display validation messages in views
-- [ ] Handle unauthorized access attempts
+- [X] Handle upload errors gracefully
+- [X] Handle DB errors
+- [X] Display validation messages in views
+- [X] Handle unauthorized access attempts
 
 ---
 
