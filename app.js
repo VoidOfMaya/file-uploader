@@ -39,6 +39,12 @@ setPassport();
 app.use(passport.initialize());
 app.use(passport.session());
 
+//appends errorMsg locals globaly
+app.use((req, res, next) =>{
+    res.locals.errorMsg = req.session.errorMsg || null;
+    delete req.session.errorMsg;
+    next();
+})
 //router setup
 app.use('/', defaultRouter); //protected: has authcheck integrated within controller logic 
 app.use('/auth',authRouter);
@@ -52,7 +58,7 @@ app.use((req, res)=>{
 })
 // global server error
 app.use((err, req,res, next)=>{
-    console.error(err);
+    console.error(err.stack);
     res.status(500).render('500',{errorMsg: err})
 })
 

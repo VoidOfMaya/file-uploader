@@ -22,6 +22,7 @@ const upload = multer({storage: storage,limits:
             cb(null,true);
         }else{
             cb(new Error("only images, pdgs, and word docs allowed!"));
+            
         }
     }
 });

@@ -39,7 +39,8 @@ async function uploadFile(req, res, next){
       console.log('added to db');
       
    }catch(err){
-      next(err)
+      //next(err)
+      res.status(500).json({errorMsg: err})
    }
    req.body.folderId? res.redirect(`/folders/${req.body.folderId}?`): res.redirect('/');
  }
