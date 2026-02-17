@@ -44,6 +44,9 @@ app.use('/', defaultRouter);
 app.use('/auth',authRouter);
 app.use('/upload',fileRouter);
 app.use('/folders',folderRouter);
+app.use((req, res)=>{
+    res.render('404')
+})
 
 //listining setup
 
