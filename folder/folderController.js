@@ -4,8 +4,8 @@ import { validationResult, matchedData } from "express-validator";
 async function createFolder(req, res, next){
     const errors = validationResult(req);
     if(!errors.isEmpty()){
-        console.log(errors.array())
-        res.redirect('/')
+        req.flash('errors', errors.array());
+        return res.redirect('/')
     }
     const data = matchedData(req);
     try{

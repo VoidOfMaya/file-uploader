@@ -11,7 +11,8 @@ async function uploadFile(req, res, next){
    const errors = validationResult(req);
    if(!errors.isEmpty){
       console.log(errors.array());
-      res.render('homepage',{errors: errors.array()});
+      req.flash('errors', errors.array());
+      res.redirect('/');
    }
    try{            
       const result = await cloudUpload(req.file.buffer);
@@ -19,7 +20,8 @@ async function uploadFile(req, res, next){
       
       //checks if cloudinary  returned the correct objects
       if(!result.secure_url){ 
-         return next(new Error('internal Error: cloudinary url faulty, try again later!'))
+         req.flash('errors','internal Error: cloudinary url faulty, try again later!' );
+         return res.redirect('/')
       }
       // handles file upload from folder
       
