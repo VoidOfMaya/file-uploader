@@ -1,5 +1,5 @@
 
-import { prismaGetFilesByUserId } from "../queries/fileQueries.js"
+import { prismaGetFilesByUserId } from "../queries/fileQueries.js";
 import { prismaGetFoldersByUserId } from "../queries/folderQueries.js";
 
 //gets all available folders and files owned by user
@@ -19,5 +19,5 @@ export default async function getHomePage(req, res, next){
     res.render('homepage',{user: req.user,
                           files: childFiles, 
                           folders: folders,
-                          errors: 'oops can not upload files bigger then 5MB'})
+                          errors: null})
 } 

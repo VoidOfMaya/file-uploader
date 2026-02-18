@@ -213,7 +213,7 @@ button:hover{
     padding: 20px;
     border-radius: 20px;
     opacity: 0;
-    animation: error-pop-up 5s ease both;
+    animation: error-pop-up 5s ease-in-out both;
 
 }
 @keyframes error-pop-up {

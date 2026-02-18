@@ -11,7 +11,7 @@ async function uploadFile(req, res, next){
    const errors = validationResult(req);
    if(!errors.isEmpty){
       console.log(errors.array());
-      res.redirect('/');
+      res.render('homepage',{errors: errors.array()});
    }
    try{            
       const result = await cloudUpload(req.file.buffer);
@@ -40,7 +40,7 @@ async function uploadFile(req, res, next){
       
    }catch(err){
       //next(err)
-      res.status(500).json({errorMsg: err})
+      res.render('/homepage',{errors: err})
    }
    req.body.folderId? res.redirect(`/folders/${req.body.folderId}?`): res.redirect('/');
  }

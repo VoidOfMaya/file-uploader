@@ -41,8 +41,11 @@ app.use(passport.session());
 
 //appends errorMsg locals globaly
 app.use((req, res, next) =>{
-    res.locals.errorMsg = req.session.errorMsg || null;
-    delete req.session.errorMsg;
+    res.locals.errors =  null;
+    res.locals.user = req.user || null;
+    res.locals.files =[], 
+    res.locals.folders =[],
+    res.locals.validationErr = null
     next();
 })
 //router setup

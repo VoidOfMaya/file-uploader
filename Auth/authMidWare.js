@@ -66,7 +66,7 @@ passport.deserializeUser(async(id, done)=>{
 }
 function checkAuth (req, res, next){
     if(!req.user){
-        return res.redirect('/');
+        return res.render('homepage',{errors: "Access Denied! "});
     }
     next();
 }
