@@ -14,6 +14,10 @@
             <% } %>
     </header>
     <main>
+        <% if(errors){ %>
+            <%- console.log(errors) %>
+            <div class="alert-error" >Error: <%= errors %></div>
+        <% } %>
 
         <% if(user){ %>
             <%- include('partials/userDashboard') %>   

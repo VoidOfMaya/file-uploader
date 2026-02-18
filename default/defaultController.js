@@ -16,5 +16,8 @@ export default async function getHomePage(req, res, next){
     }
    const childFiles = (files ?? []).filter(f => f.folderId === null);
     //only showes files who lack a parent folder!
-    res.render('homepage',{user: req.user, files: childFiles, folders: folders})
+    res.render('homepage',{user: req.user,
+                          files: childFiles, 
+                          folders: folders,
+                          errors: 'oops can not upload files bigger then 5MB'})
 } 

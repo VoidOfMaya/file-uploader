@@ -203,6 +203,32 @@ button:hover{
         box-shadow: 0px 0px 24px -15px rgba(66, 68, 90, 1)
     }
 }
+/*error handler*/
+.alert-error{
+    position: absolute;
+    background-color: red; 
+    color: white;
+    bottom: 20px;
+    right: 20px;
+    padding: 20px;
+    border-radius: 20px;
+    opacity: 0;
+    animation: error-pop-up 5s ease both;
+
+}
+@keyframes error-pop-up {
+    0%      {
+                opacity: 0;
+                bottom: -20px;
+            }
+    50%     {
+                opacity: 1;
+                bottom: 20px;
+            }
+    100%    {opacity: 0;}
+    
+}
+
 @media (max-width: 700px){
 
     main{
