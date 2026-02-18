@@ -9,7 +9,7 @@ async function uploadFile(req, res, next){
 
    //handle data upload:
    const errors = validationResult(req);
-   if(!errors.isEmpty){
+   if(!errors.isEmpty()){
       console.log(errors.array());
       req.flash('errors', errors.array());
       res.redirect('/');
@@ -42,9 +42,10 @@ async function uploadFile(req, res, next){
       
    }catch(err){
       //next(err)
-      res.render('/homepage',{errors: err})
+      req.flash('errors', err);
+      res.redirect('/')
    }
-   req.body.folderId? res.redirect(`/folders/${req.body.folderId}?`): res.redirect('/');
+    return req.body.folderId? res.redirect(`/folders/${req.body.folderId}?`): res.redirect('/');
  }
 async function downloadFile(req, res, next) {
    const fileId = Number(req.params.id);

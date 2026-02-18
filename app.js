@@ -37,11 +37,11 @@ app.use(express.json());
 setSession(app)
 
 setPassport();
+app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 
 //appends errorMsg locals globaly
-app.use(flash());
 app.use((req, res, next) =>{
     //res.locals.errors =  req.flash('errors')[0] || null;
     res.locals.user = req.user || null;

@@ -40,4 +40,5 @@ async function actionLogout(req, res, next) {
 export{
     actionCreateUser,
     actionLogout,
+
 }

@@ -28,18 +28,29 @@ const upload = multer({storage: storage,limits:
 
 function multerMiddleware (req, res, next){
     upload.single('upFile')(req, res, (err)=>{
-        const {files, folders} = getGlobalData(req.user.id);
-        const childFiles = (files ?? []).filter(f => f.folderId === null);
-        if(err?.code === 'LIMIT_FILE_SIZE'){
-            req.flash('errors', 'File exceeds the 5MB size limit.');
-            return res.redirect('/')
+        try{
+            const {files, folders} = getGlobalData(req.user.id);
+            const childFiles = (files ?? []).filter(f => f.folderId === null);
+            if(err?.code === 'LIMIT_FILE_SIZE'){
+                
+                req.flash('errors', 'File exceeds the 5MB size limit.');
+                return req.session.save(()=>{
+                   res.redirect('/') 
+                })
+            }
+            if(req.fileValidationError){
+                req.flash('errors',req.fileValidationError);
+                return req.session.save(()=>{
+                   res.redirect('/') 
+                })
+            }  
+            next();          
+        }catch(err){
+            next(err);            
         }
-        if(req.fileValidationError){
-            req.flash('errors',req.fileValidationError);
-            return res.redirect('/')
-        }
-        next()
+
     })
+
 }
 export{
     multerMiddleware,

@@ -1,6 +1,4 @@
 import expressSession from 'express-session';
-import {PrismaPg} from '@prisma/adapter-pg';
-import {PrismaClient} from '../generated/prisma/client.js';
 import {PrismaSessionStore} from '@quixo3/prisma-session-store';
 import passport from 'passport';
 import {Strategy as LocalStrategy} from 'passport-local';

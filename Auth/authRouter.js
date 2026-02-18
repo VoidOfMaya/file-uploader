@@ -9,7 +9,7 @@ import {
 const authRouter = Router();
 
 authRouter.post('/register',validateSignup, actionCreateUser);
-authRouter.post('/login', validateLogin, passport.authenticate('local',{successRedirect: '/', failureRedirect: '/'}));
+authRouter.post('/login', validateLogin, passport.authenticate('local',{successRedirect: '/', failureRedirect: '/',failureFlash: true}));
 authRouter.get('/logout', actionLogout);
 
 
