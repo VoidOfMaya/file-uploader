@@ -31,11 +31,11 @@ function multerMiddleware (req, res, next){
         const {files, folders} = getGlobalData(req.user.id);
         const childFiles = (files ?? []).filter(f => f.folderId === null);
         if(err?.code === 'LIMIT_FILE_SIZE'){
-            console.log(err)
+            req.flash('errors', 'File exceeds the 5MB size limit.');
             return res.redirect('/')
         }
         if(req.fileValidationError){
-            console.log(err)
+            req.flash('errors',req.fileValidationError);
             return res.redirect('/')
         }
         next()

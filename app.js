@@ -1,5 +1,6 @@
 import express from 'express';
 import path from 'node:path';
+import flash from 'connect-flash';
 import { fileURLToPath } from 'node:url';
 import'dotenv/config';
 
@@ -40,13 +41,15 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //appends errorMsg locals globaly
+app.use(flash());
 app.use((req, res, next) =>{
-    res.locals.errors =  null;
+    //res.locals.errors =  req.flash('errors')[0] || null;
     res.locals.user = req.user || null;
     res.locals.files =[], 
     res.locals.folders =[],
     res.locals.validationErr = null
     next();
+
 })
 //router setup
 app.use('/', defaultRouter); //protected: has authcheck integrated within controller logic 

@@ -14,9 +14,8 @@
             <% } %>
     </header>
     <main>
-        <% if(errors){ %>
-            <%- console.log(errors) %>
-            <div class="alert-error" >Error: <%= errors %></div>
+        <% if(errors && errors.length > 0){ %>
+            <div class="alert-error" >Error: <%= errors[0] %></div>
         <% } %>
 
         <% if(user){ %>

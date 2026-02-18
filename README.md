@@ -28,3 +28,4 @@
 - @prisma/client
 - @prisma/adapter-pg
 - @quixo3/prisma-session-store
+- connect-flash
