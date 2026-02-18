@@ -17,7 +17,6 @@ async function actionCreateUser(req, res, next){
             username: data.username, 
             password: await bcrypt.hash(data.password, 10),
         };
-        console.log(parsedData);
         await prismaAddUser(parsedData);
         console.log(`Registration success`);
     }catch(err){

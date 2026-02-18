@@ -43,7 +43,7 @@ const fileUser =[
 ]
 const validateFolderName = [
     body('folderName').trim().notEmpty().withMessage('field required')
-                      .matches(/^(?!\.)([a-zA-Z0-9_-]+)$/).withMessage('Folder name may only contain letters, numbers, hyphens (-), and underscores (_).')
+                      .matches(/^(?!\.)([a-zA-Z0-9_ -]+)$/).withMessage('Folder name may only contain letters, numbers, hyphens (-), and underscores (_).')
                       .isLength({min: 1, max: 20}).withMessage('value must atleats be 1 character long and not exceed 20')
 ]
 
